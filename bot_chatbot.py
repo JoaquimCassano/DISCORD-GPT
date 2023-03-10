@@ -12,19 +12,11 @@ intents = nextcord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='>', intents=intents)
 client = nextcord.Client(intents=intents)
-<<<<<<< HEAD
-openai.api_key = OPENAI-KEY
-=======
 openai.api_key = "OPENAI_KEY"
->>>>>>> 077ca67878fe08ba6806a24c8252e24bc0d05d65
 colorama_init()
 
 async def get_davinci_response(prompt):
-<<<<<<< HEAD
-    openai.api_key = OPENAI-KEY
-=======
     openai.api_key = "OPENAI_KEY"
->>>>>>> 077ca67878fe08ba6806a24c8252e24bc0d05d65
     completions = openai.Completion.create(
         engine="text-davinci-003",
         prompt=prompt,
@@ -38,11 +30,7 @@ async def get_davinci_response(prompt):
 
 
 async def get_chatgpt_response(message_log):
-<<<<<<< HEAD
-    openai.api_key = OPENAI-KEY
-=======
     openai.api_key = "OPENAI_KEY"
->>>>>>> 077ca67878fe08ba6806a24c8252e24bc0d05d65
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", 
         messages=message_log,
