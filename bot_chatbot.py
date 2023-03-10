@@ -12,11 +12,11 @@ intents = nextcord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix='>', intents=intents)
 client = nextcord.Client(intents=intents)
-openai.api_key = "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"
+openai.api_key = "OPENAI_KEY"
 colorama_init()
 
 async def get_davinci_response(prompt):
-    openai.api_key = "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"
+    openai.api_key = "OPENAI_KEY"
     completions = openai.Completion.create(
         engine="text-davinci-003",
         prompt=prompt,
@@ -30,7 +30,7 @@ async def get_davinci_response(prompt):
 
 
 async def get_chatgpt_response(message_log):
-    openai.api_key = "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"
+    openai.api_key = "OPENAI_KEY"
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo", 
         messages=message_log,
@@ -56,7 +56,7 @@ class ChatGPT(commands.Cog):
         '''ChatGPT 3.5 model'''
         await interaction.response.defer()
         message_log = [
-            {"role": "system", "content": f"using {interaction.guild.preferred_locale}, say hi and inform the user to type exit when is finished, {f'@{interaction.user}'} is the user username u need keep the original username letter case"}
+            {"role": "system", "content": f"using {interaction.channel}, say hi and inform the user to type exit when is finished, {f'@{interaction.user}'} is the user username u need keep the original username letter case"}
         ]
 
         response = await get_chatgpt_response(message_log)
@@ -87,7 +87,7 @@ class ChatGPT(commands.Cog):
                 await message.reply(response)
 
     @bot.slash_command()
-    async def invocar_personalidade(self, interaction: nextcord.Interaction):
+    async def invocar_personalidade(self, interaction: nextcord.Interaction): #here, the bot chats like a brazilian youtuber
         '''ChatGPT 3.5 model'''
         await interaction.response.defer()
         message_log = [
